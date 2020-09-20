@@ -51,7 +51,7 @@ int main() {
   printDoubleVector(x);
 
   std::cout << "w: ";
-  printDoubleVector(x);
+  printDoubleVector(w);
 
   int center = (w.size() - 1) / 2;
 
