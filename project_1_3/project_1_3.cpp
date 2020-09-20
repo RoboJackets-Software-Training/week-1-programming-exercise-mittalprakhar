@@ -35,11 +35,35 @@ int main() {
   std::cin >> s;
   w = readInVector(s);
 
-  // TODO write your code here
   // =========== START =========
 
+  int center = (w.size() - 1) / 2;
 
+  for (int i = 0; i < x.size(); i++) {
+  	double sum = 0;
 
+  	for (int j = 0; j < w.size(); j++) {
+  		int diff = i - center + j;
+  		
+  		if (diff < 0 and not pack_with_zeros) {
+  			sum += x[0] * w[j];
+  		} else if (diff >= 0 and diff < x.size()) {
+  			sum += x[diff] * w[j];
+  		} else if (diff >= x.size() and not pack_with_zeros) {
+  			sum += x[x.size()-1] * w[j];
+  		}
+  	}
+
+  	y.push_back(sum);
+  }
+
+  std::cout << "{" << y[0];
+
+  for (int i = 1; i < y.size(); i++) {
+  	std::cout << ", " << y[i];
+  }
+
+  std::cout << "}\n";
 
   // =========== END ===========
 
