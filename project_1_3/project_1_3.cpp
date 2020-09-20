@@ -19,7 +19,8 @@ std::vector<double> readInVector(std::string s) {
   return result;
 }
 
-void printDoubleVector(std::vector<double> v) {
+template <typename T>
+void printVector(std::vector<T> v) {
 	if (v.size() > 0) {
 		std::cout << "{" << v[0];
   		for (int i = 1; i < v.size(); i++) {
@@ -48,10 +49,10 @@ int main() {
   // =========== START =========
 
   std::cout << "x: ";
-  printDoubleVector(x);
+  printVector(x);
 
   std::cout << "w: ";
-  printDoubleVector(w);
+  printVector(w);
 
   int center = (w.size() - 1) / 2;
 
@@ -73,7 +74,7 @@ int main() {
   	y.push_back(sum);
   }
 
-  printDoubleVector(y);
+  printVector(y);
 
   // =========== END ===========
 
