@@ -19,6 +19,17 @@ std::vector<double> readInVector(std::string s) {
   return result;
 }
 
+template <typename T>
+void printVector(std::vector<T> v) {
+	if (v.size() > 0) {
+		std::cout << "{" << v[0];
+  		for (int i = 1; i < v.size(); i++) {
+  			std::cout << ", " << v[i];
+  		}
+  		std::cout << "}" << std::endl;
+	}
+}
+
 int main() {
   std::vector<double> x;
   std::vector<double> w;
@@ -35,11 +46,35 @@ int main() {
   std::cin >> s;
   w = readInVector(s);
 
-  // TODO write your code here
   // =========== START =========
 
+  std::cout << "x: ";
+  printVector(x);
 
+  std::cout << "w: ";
+  printVector(w);
 
+  int center = (w.size() - 1) / 2;
+
+  for (int i = 0; i < x.size(); i++) {
+  	double sum = 0;
+
+  	for (int j = 0; j < w.size(); j++) {
+  		int diff = i - center + j;
+  		
+  		if (diff < 0 and not pack_with_zeros) {
+  			sum += x[0] * w[j];
+  		} else if (diff >= 0 and diff < x.size()) {
+  			sum += x[diff] * w[j];
+  		} else if (diff >= x.size() and not pack_with_zeros) {
+  			sum += x[x.size()-1] * w[j];
+  		}
+  	}
+
+  	y.push_back(sum);
+  }
+
+  printVector(y);
 
   // =========== END ===========
 
